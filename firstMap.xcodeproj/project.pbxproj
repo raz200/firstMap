@@ -12,6 +12,11 @@
 		6A216A612B1F85F400DC661D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6A216A602B1F85F400DC661D /* Assets.xcassets */; };
 		6A216A642B1F85F400DC661D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6A216A632B1F85F400DC661D /* Preview Assets.xcassets */; };
 		6A216A6B2B1F871800DC661D /* maps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A216A6A2B1F871800DC661D /* maps.swift */; };
+		D17903B72B284AA1004F5118 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D17903B92B284AA1004F5118 /* Localizable.strings */; };
+		D17903BE2B288AF1004F5118 /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D17903BC2B288AF1004F5118 /* DataModel.xcdatamodeld */; };
+		D17903C12B288C7C004F5118 /* MarkerEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17903BF2B288C7C004F5118 /* MarkerEntity+CoreDataClass.swift */; };
+		D17903C22B288C7C004F5118 /* MarkerEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17903C02B288C7C004F5118 /* MarkerEntity+CoreDataProperties.swift */; };
+		D17903C42B288F02004F5118 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17903C32B288F02004F5118 /* DataController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +27,13 @@
 		6A216A632B1F85F400DC661D /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		6A216A6A2B1F871800DC661D /* maps.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = maps.swift; sourceTree = "<group>"; };
 		6A216A6C2B1F88A200DC661D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		D17903B82B284AA1004F5118 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		D17903BA2B284EC7004F5118 /* fi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fi; path = fi.lproj/Localizable.strings; sourceTree = "<group>"; };
+		D17903BB2B287920004F5118 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/Localizable.strings; sourceTree = "<group>"; };
+		D17903BD2B288AF1004F5118 /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
+		D17903BF2B288C7C004F5118 /* MarkerEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MarkerEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
+		D17903C02B288C7C004F5118 /* MarkerEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MarkerEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		D17903C32B288F02004F5118 /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -38,6 +50,10 @@
 		6A216A502B1F85F100DC661D = {
 			isa = PBXGroup;
 			children = (
+				D17903C32B288F02004F5118 /* DataController.swift */,
+				D17903BF2B288C7C004F5118 /* MarkerEntity+CoreDataClass.swift */,
+				D17903C02B288C7C004F5118 /* MarkerEntity+CoreDataProperties.swift */,
+				D17903BC2B288AF1004F5118 /* DataModel.xcdatamodeld */,
 				6A216A5B2B1F85F100DC661D /* firstMap */,
 				6A216A5A2B1F85F100DC661D /* Products */,
 			);
@@ -57,6 +73,7 @@
 				6A216A6C2B1F88A200DC661D /* Info.plist */,
 				6A216A5C2B1F85F100DC661D /* firstMapApp.swift */,
 				6A216A5E2B1F85F100DC661D /* ContentView.swift */,
+				D17903B92B284AA1004F5118 /* Localizable.strings */,
 				6A216A6A2B1F871800DC661D /* maps.swift */,
 				6A216A602B1F85F400DC661D /* Assets.xcassets */,
 				6A216A622B1F85F400DC661D /* Preview Content */,
@@ -114,6 +131,8 @@
 			knownRegions = (
 				en,
 				Base,
+				fi,
+				sv,
 			);
 			mainGroup = 6A216A502B1F85F100DC661D;
 			productRefGroup = 6A216A5A2B1F85F100DC661D /* Products */;
@@ -131,6 +150,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6A216A642B1F85F400DC661D /* Preview Assets.xcassets in Resources */,
+				D17903B72B284AA1004F5118 /* Localizable.strings in Resources */,
 				6A216A612B1F85F400DC661D /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -142,19 +162,37 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D17903C42B288F02004F5118 /* DataController.swift in Sources */,
 				6A216A5F2B1F85F100DC661D /* ContentView.swift in Sources */,
+				D17903C12B288C7C004F5118 /* MarkerEntity+CoreDataClass.swift in Sources */,
+				D17903BE2B288AF1004F5118 /* DataModel.xcdatamodeld in Sources */,
 				6A216A5D2B1F85F100DC661D /* firstMapApp.swift in Sources */,
+				D17903C22B288C7C004F5118 /* MarkerEntity+CoreDataProperties.swift in Sources */,
 				6A216A6B2B1F871800DC661D /* maps.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXVariantGroup section */
+		D17903B92B284AA1004F5118 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D17903B82B284AA1004F5118 /* en */,
+				D17903BA2B284EC7004F5118 /* fi */,
+				D17903BB2B287920004F5118 /* sv */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
 /* Begin XCBuildConfiguration section */
 		6A216A652B1F85F400DC661D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -215,6 +253,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -345,6 +384,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		D17903BC2B288AF1004F5118 /* DataModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				D17903BD2B288AF1004F5118 /* DataModel.xcdatamodel */,
+			);
+			currentVersion = D17903BD2B288AF1004F5118 /* DataModel.xcdatamodel */;
+			path = DataModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 6A216A512B1F85F100DC661D /* Project object */;
 }

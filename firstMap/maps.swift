@@ -7,6 +7,7 @@
 
 import Foundation
 import MapKit
+import SwiftUI
 
 // Address Data Model
 struct Address: Codable {
@@ -55,9 +56,7 @@ class MapAPI: ObservableObject {
     
     init() {
         // Default Info
-        self.region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 51.507222, longitude: -0.1275), span: MKCoordinateSpan(latitudeDelta: 5, longitudeDelta: 5))
-
-        self.locations.insert(Location(name: "Pin", coordinate: CLLocationCoordinate2D(latitude: 51.507222, longitude: -0.1275)), at: 0)
+        self.region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 60.192059, longitude: 24.945831), span: MKCoordinateSpan(latitudeDelta: 5, longitudeDelta: 5))
 
         // Load and display saved locations when initializing
         loadAndDisplaySavedLocations()
@@ -93,7 +92,7 @@ class MapAPI: ObservableObject {
            DispatchQueue.main.async {
                self.locations = self.savedLocations
            }
-       }
+    }
     
     // API request
     func getLocation(address: String, delta: Double) {
@@ -134,9 +133,22 @@ class MapAPI: ObservableObject {
                 }
                 
                 DispatchQueue.main.async {
+                    
+                    //@FetchRequest(sortDescriptors: []) var markers: FetchedResults<MarkerEntity>
+                    //@Environment(\.managedObjectContext) var moc
+                    
+                    //let marker = MarkerEntity(context: moc)
+                    
                     let details = newCoordinates.data[0]
                     let lat = details.latitude
                     let lon = details.longitude
+                    
+                    
+                    // Sets values to Core
+                    //marker.id = UUID()
+                    //marker.name = details.name
+                    //marker.latitude = details.latitude
+                    //marker.longitude = details.longitude
                     
                     self.coordinates = [lat, lon]
                     self.region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: lat, longitude: lon), span: MKCoordinateSpan(latitudeDelta: delta, longitudeDelta: delta))
@@ -153,6 +165,8 @@ class MapAPI: ObservableObject {
         }
         .resume()
     }
+    
+    
     
     // Method to add the current location to saved locations
     func addCurrentLocation() {
@@ -179,4 +193,12 @@ class MapAPI: ObservableObject {
             self.saveLocations() // Save locations after adding a new one
         }
     }
+    
+    func deleteLocation(_ location: Location) {
+        if let index = savedLocations.firstIndex(where: { $0.id == location.id }) {
+            savedLocations.remove(at: index)
+            saveLocations() // Save the updated list
+        }
+    }
 }
+
