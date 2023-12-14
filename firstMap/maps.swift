@@ -31,20 +31,22 @@ extension CLLocationCoordinate2D: Codable {
         case latitude
         case longitude
     }
-
+    
     public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         let latitude = try container.decode(Double.self, forKey: .latitude)
         let longitude = try container.decode(Double.self, forKey: .longitude)
         self.init(latitude: latitude, longitude: longitude)
     }
-
+    
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(latitude, forKey: .latitude)
         try container.encode(longitude, forKey: .longitude)
     }
 }
+
+// MapAPI class for location controls.
 class MapAPI: ObservableObject {
     private let BASE_URL = "http://api.positionstack.com/v1/forward"
     private let API_KEY = "92d0989cebd26dea67f59db3a280d7a6"
@@ -57,17 +59,18 @@ class MapAPI: ObservableObject {
     init() {
         // Default Info
         self.region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 60.192059, longitude: 24.945831), span: MKCoordinateSpan(latitudeDelta: 5, longitudeDelta: 5))
-
+        
         // Load and display saved locations when initializing
         loadAndDisplaySavedLocations()
     }
-
+    
     
     // Method to focus on a specific location on the map
     func focusOnLocation(_ location: Location) {
         region = MKCoordinateRegion(center: location.coordinate, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
     }
     
+    // Saving location to UserDefaults
     func saveLocations() {
         let encoder = JSONEncoder()
         if let encoded = try? encoder.encode(savedLocations) {
@@ -86,12 +89,12 @@ class MapAPI: ObservableObject {
     }
     
     func loadAndDisplaySavedLocations() {
-           loadLocations()
-
-           // Update the locations array to display the saved markers on the map
-           DispatchQueue.main.async {
-               self.locations = self.savedLocations
-           }
+        loadLocations()
+        
+        // Update the locations array to display the saved markers on the map
+        DispatchQueue.main.async {
+            self.locations = self.savedLocations
+        }
     }
     
     // API request
@@ -134,21 +137,9 @@ class MapAPI: ObservableObject {
                 
                 DispatchQueue.main.async {
                     
-                    //@FetchRequest(sortDescriptors: []) var markers: FetchedResults<MarkerEntity>
-                    //@Environment(\.managedObjectContext) var moc
-                    
-                    //let marker = MarkerEntity(context: moc)
-                    
                     let details = newCoordinates.data[0]
                     let lat = details.latitude
                     let lon = details.longitude
-                    
-                    
-                    // Sets values to Core
-                    //marker.id = UUID()
-                    //marker.name = details.name
-                    //marker.latitude = details.latitude
-                    //marker.longitude = details.longitude
                     
                     self.coordinates = [lat, lon]
                     self.region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: lat, longitude: lon), span: MKCoordinateSpan(latitudeDelta: delta, longitudeDelta: delta))
@@ -165,8 +156,6 @@ class MapAPI: ObservableObject {
         }
         .resume()
     }
-    
-    
     
     // Method to add the current location to saved locations
     func addCurrentLocation() {
